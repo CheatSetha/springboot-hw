@@ -1,0 +1,34 @@
+<div th:fragment="user-card(id, fullName, username, bio,gender, email,address,profilePicture,coverPicture)"
+     class="card " style="width: 18rem;">
+    <div class="cover"></div>
+    <img class="card-img-top avatar"
+         th:src="${profilePicture}"
+         alt="Card image cap">
+    <section class="name">
+        <a th:href="@{/user/{id}(id =${id})}"><h5 class="mb-0" th:text="${fullName}"></h5></a>
+        @ <small th:text="${username}"></small>
+    </section>
+    <div class=" card-body cardBody">
+        gmail: <p th:text="${email}"></p>
+        <address th:text="${address}"></address>
+        <p class="card-text m-0" th:text="${bio}"></p>
+
+    </div>
+</div>
+<a th:fragment="user-readonly(id, fullName, username, bio,gender, email,address,profilePicture,coverPicture)"
+   th:href="@{/article/{uuid}(uuid=${id})}" class="text-decoration-none">
+    <div class="cover"></div>
+    <img class="card-img-top avatar"
+         src="https://z-p3-scontent.fpnh5-1.fna.fbcdn.net/v/t39.30808-6/316046117_1674495899613609_2318823932728507955_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFVGlHa-yJfN6hOhhPA4VrDgn9ll5-9JH6Cf2WXn70kfixXR5BuDcM_jgBJ4evk3WN-gzpz0-i-872nGqaLNDN9&_nc_ohc=rUqUl-yil9YAX-O7Mun&_nc_zt=23&_nc_ht=z-p3-scontent.fpnh5-1.fna&oh=00_AfDJDrGOBJqpGDIuVTBwOIv9tZNlAA7Ab8psv4CqCvKL-A&oe=6446F633"
+         alt="Card image cap">
+    <section class="name">
+        <a href="/user/{id}"><h5 class="mb-0" th:text="${fullName}"></h5></a>
+        @ <small th:text="${username}"></small>
+    </section>
+    <div class=" card-body cardBody">
+        gmail: <p th:text="${email}"></p>
+        <address th:text="${address}"></address>
+        <p class="card-text m-0" th:text="${bio}"></p>
+
+    </div>
+</a>

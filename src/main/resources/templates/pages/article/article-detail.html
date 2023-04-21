@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/master-layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<main layout:fragment="main-content">
+ <div th:object="${article}">
+   <div th:text="${article.title}"></div>
+   <div th:text="${article.author}"></div>
+    <div th:text="${article.category}"></div>
+    <div th:text="${article.description}"></div>
+   <img th:src="@{http://localhost:8080/files/{thumbnail}(thumbnail=${article.thumbnail})}" alt="News Coffee" class="bd-placeholder-img card-img-top w-25">
+
+ </div>
+</main>
+
+</body>
+</html>

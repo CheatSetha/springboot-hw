@@ -1,0 +1,30 @@
+
+/*card-user*/
+.avatar{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    bottom: 40px !important;
+    left: 10px;
+    border: 3px solid white;
+}
+.cover{
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    background-image: url("https://imgs.search.brave.com/Y85FuMRyzJlZJ1Jlt4Y4AbtwMbyOKWZG-K3x9t6etyU/rs:fit:741:225:1/g:ce/aHR0cHM6Ly90c2Uz/LmV4cGxpY2l0LmJp/bmcubmV0L3RoP2lk/PU9JUC5MX2pwTkFh/NFhyTUxSV09lX216/QVdBSGFFdiZwaWQ9/QXBp");
+}
+.name{
+    position: relative;
+    bottom: 90px;
+    left: 130px;
+}
+.name > small{
+    opacity: 70%;
+    color: #052c65;
+}
+.cardBody{
+    margin-top: -5rem;
+}
+/*end of card-user*/

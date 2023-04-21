@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/master-layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<main layout:fragment="main-content">
+  <h1 > total categories <span th:text="${categories.size()}"></span> </h1>
+ <div th:fragment="cate-list">
+   <div  th:each="category : ${categories}" th:object="${category}">
+
+     <div th:replace="~{fragments/cate-list}"></div>
+
+   </div>
+
+ </div>
+
+</main>
+
+</body>
+</html>
