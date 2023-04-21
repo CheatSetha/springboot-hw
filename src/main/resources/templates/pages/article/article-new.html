@@ -19,6 +19,11 @@
                         <input th:field="*{title}" class="form-control" id="title" type="text">
                         <div class="form-text text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Description</label>
+                        <input th:field="*{description}" class="form-control" id="description" type="text">
+                        <div class="form-text text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{description}"></div>
+                    </div>
 <!--                    <div class="mb-3">-->
 <!--                        <label class="form-label" for="author">Author</label>-->
 <!--                        <input th:field="*{author}" class="form-control" id="author" type="text">-->

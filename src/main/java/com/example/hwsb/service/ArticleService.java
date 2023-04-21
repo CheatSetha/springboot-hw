@@ -20,7 +20,7 @@ public interface ArticleService {
     boolean update(Article article, MultipartFile file);
 
 
-    boolean save(Article article, MultipartFile file ,List<Category> category);
+    boolean save(Article article, MultipartFile file);
     Article findArticleByCategory(Category category);
     List<User> user();
     List<Category> category();

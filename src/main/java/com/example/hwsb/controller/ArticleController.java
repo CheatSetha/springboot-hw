@@ -28,8 +28,7 @@ public class ArticleController {
     private final UserService userService;
 
     @GetMapping
-
-    String viewArticle(Model model){
+    String viewArticle(Model model) {
         List<Article> articles = articleMapper.findAll();
         List<Category> categoriesList = categoryService.findAllCategories();
         model.addAttribute("articles", articles);
@@ -38,9 +37,10 @@ public class ArticleController {
     }
 
     @GetMapping("/new")
-    String viewArticleNew(Article article, Model model ) {
+    String viewArticleNew(Article article, Model model) {
         model.addAttribute("article", article);
         model.addAttribute("users", articleMapper.user());
+        model.addAttribute("categories", articleMapper.category());
         model.addAttribute("categories", articleMapper.category());
         List<Category> categories = categoryService.findAllCategories().stream().toList();
         System.out.println("obj = " + categories.stream().iterator().next().getCateId());
@@ -50,13 +50,12 @@ public class ArticleController {
 
     @PostMapping("/new")
     String doSaveArticle(@ModelAttribute @Valid Article article,
-                         @RequestParam("cateId") List<String> cate_id,
                          BindingResult result,
 //       @RequestParam("userId") List<String> userId,
-                         @RequestParam("thumbnailFile") MultipartFile file,
+                         @RequestParam("thumbnailFile, category") MultipartFile file,
                          Model model) {
         //filter category
-        List<Category> categories = categoryService.findAllCategories().stream().filter(c -> cate_id.contains(c.getCateId())).toList();
+        //List<Category> categories = categoryService.findAllCategories().stream().filter(c -> cate_id.contains(c.getCateId())).toList();
 
 
         if (result.hasErrors()) {
@@ -65,13 +64,14 @@ public class ArticleController {
             return "pages/article/article-new";
         }
 
-        boolean isSucceed =articleService.save(article, file, categories);
+        boolean isSucceed = articleService.save(article, file);
         if (isSucceed) {
             return "redirect:/article";
         }
 
         return "pages/article/article-new";
     }
+
     @GetMapping("/{uuid}")
     String articleDetail(@PathVariable("uuid") String uuid, Model model) {
         Article article = articleMapper.findByUuid(uuid);
@@ -89,15 +89,17 @@ public class ArticleController {
     @GetMapping("/edit/{uuid}")
     String editArticle(@PathVariable("uuid") String uuid, Model model) {
         Article article = articleMapper.findByUuid(uuid);
-        System.out.println("uuid ="+article.getUuid());
+
+        System.out.println("uuid =" + article.getUuid());
         model.addAttribute("article", article);
         return "pages/article/article-edit";
     }
-//    when click on btn update or save
-    @PutMapping ("/update/{uuid}")
-    String updateArticle(@PathVariable("uuid") String uuid,@ModelAttribute @Valid Article article
-                         , BindingResult result
-                         , @RequestParam("thumbnailFile") MultipartFile file,
+
+    //    when click on btn update or save
+    @PutMapping("/update/{uuid}")
+    String updateArticle(@PathVariable("uuid") String uuid, @ModelAttribute @Valid Article article
+            , BindingResult result
+            , @RequestParam("thumbnailFile") MultipartFile file,
                          Model model) {
         if (result.hasErrors()) {
             model.addAttribute("article", article);

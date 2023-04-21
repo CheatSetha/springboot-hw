@@ -20,8 +20,8 @@ public interface ArticleMapper {
     List<User> user();
     @Select("SELECT * FROM categories")
     List<Category> category();
-    @Insert("INSERT INTO articles (uuid, title,author, thumbnail ,cate_id) VALUES (#{a.uuid}, #{a.title},#{a.author}, #{a.thumbnail},#{a.cateId})")
-    void insert(@Param("a") Article article ,MultipartFile file,  List<Category> category);
+    @Insert("INSERT INTO articles (uuid, title,author, thumbnail ) VALUES (#{a.uuid}, #{a.title},#{a.author}, #{a.thumbnail})")
+    void insert(@Param("a") Article article ,MultipartFile file);
     @Select("SELECT * FROM articles WHERE uuid = #{uuid}")
     Article findByUuid(String uuid);
     @Delete("DELETE FROM articles WHERE uuid = #{uuid}")

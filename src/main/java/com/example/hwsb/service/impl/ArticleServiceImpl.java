@@ -55,12 +55,12 @@ public class ArticleServiceImpl implements ArticleService {
         return true;
     }
     @Override
-    public boolean save(Article article, MultipartFile file, List<Category> category) {
+    public boolean save(Article article, MultipartFile file) {
         FileUpload fileUpload = fileUploadService.uploadSingle(file);
         if (fileUpload.isSucceed()) {
             article.setUuid(UUID.randomUUID().toString());
             article.setThumbnail(fileUpload.fileName());
-            articleMapper.insert(article, file ,category);
+            articleMapper.insert(article, file);
 
         }
         return true;

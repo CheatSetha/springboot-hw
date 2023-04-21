@@ -19,6 +19,7 @@
   <!-- card action ~ start -->
   <div th:fragment="card-action(uuid, title, thumbnail, author,category)" class="card shadow-sm">
     <img th:src="@{http://localhost:8080/files/{thumbnail}(thumbnail=${thumbnail})}" alt="News Coffee" class="bd-placeholder-img card-img-top">
+    <img th:src="@{thumbnail}" alt="News Coffee" class="bd-placeholder-img card-img-top">
     <div class="card-body">
       <p th:text="${title}" class="card-text"></p>
       <div class="d-flex justify-content-between align-items-center">
